@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 const int N = 5e5 + 10;
-int p[N], q[N];
+long long p[N],q[N];
 int n, m;
 int main()
 {
