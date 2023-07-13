@@ -15,7 +15,7 @@ public:
             {
                 return mid;
             }
-            else if (nums[mid] < target)
+            else if (nums[mid] > target)
             {
                 right = mid; // 由于right本身并不在范围内，所以如果再-1，就会导致范围内少了mid-1这个数
             }
