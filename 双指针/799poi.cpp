@@ -11,8 +11,8 @@ int main()
     int res = 0;
     for (int i = 0, j = 0; i < n; i++)
     {
-        s[a[i]]++;
-        while (s[a[i]] > 1)
+        s[a[i]]++;          // s数组记录每一个数出现的次数
+        while (s[a[i]] > 1) // 读入了i之后，有了重复元素，所以我们j指针往后移一位，
         {
             s[a[j]]--;
             j++;
