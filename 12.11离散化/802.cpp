@@ -55,7 +55,7 @@ int main()
         a[x] += item.second;      // 改值
     }
 
-    for (int i = 1; i <= alls.size(); i++) // 处理前缀和，alls数组的元素个数就是a数组的元素个数
+    for (int i = 1; i <= alls.size(); i++) // 处理前缀和
     {
         s[i] = s[i - 1] + a[i];
     }
