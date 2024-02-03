@@ -3,10 +3,10 @@
 #include<algorithm>
 #include<queue>
 using namespace std;
-const int N=1e5+10;
+const int N=2010,M=10010;
 int n,m;
-int h[N],e[N],ne[N],w[N],idx;
-int dist[N];
+int h[N],e[M],ne[M],w[M],idx;
+int dist[N],cnt[N];
 bool st[N];
 void add(int a,int b,int c)
 {
@@ -15,14 +15,15 @@ void add(int a,int b,int c)
     w[idx]=c;
     h[a]=idx++;
 }
-int spfa()
+bool spfa()
 {
-    memset(dist,0x3f,sizeof dist);
-    dist[1]=0;
     queue<int> q;
-    q.push(1);
-    st[1]=1;
-    while(q.size())
+    for(int i=1;i<=n;i++)
+    {
+        st[i]=1;
+        q.push(i);
+    }
+    while(!q.empty())
     {
         int t=q.front();
         q.pop();
@@ -33,6 +34,8 @@ int spfa()
             if(dist[j]>dist[t]+w[i])
             {
                 dist[j]=dist[t]+w[i];
+                cnt[j]=cnt[t]+1;
+                if(cnt[j]>=n)return 1;
                 if(!st[j])
                 {
                     q.push(j);
@@ -41,8 +44,7 @@ int spfa()
             }
         }
     }
-    if(dist[n]==0x3f3f3f3f)return -1;
-    return dist[n];
+    return 0;
 }
 int main()
 {
@@ -54,8 +56,7 @@ int main()
         cin>>a>>b>>c;
         add(a,b,c);
     }
-    int t=spfa();
-    if(t==-1)puts("impossible");
-    else cout<<t;
+    if(spfa())puts("Yes");
+    else puts("No");
     return 0;
 }
